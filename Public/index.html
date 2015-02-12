@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="es" ng-app>
+<html lang="es" ng-app="pokedex">
 <head>
 	<meta charset="UTF-8">
 	<meta name="description" content=" Practica para dominar AngularJs" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<title>Angular</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js" ></script>
+	<script src="js/app.js"></script>
 </head>
 <body>
-	<h1>Bulbasaur #001</h1>
-	<h2>Seed Pokemon</h2>
-	<img src="http://img3.wikia.nocookie.net/__cb20140903033758/pokemon/images/b/b8/001Bulbasaur_Dream.png" alt="bulbasaur pokemon planta"/>
-	<ul>
-		<li><strong>Type:</strong> Grass, Poison</li>
-		<li><strong>Weight:</strong> 0.71 m</li>
-		<li><strong>Height:</strong> 6.9 kg</li>
-		<li><strong>Abilities:</strong> Overgrow, Chlorophyll</li>
-	</ul>
+	<div ng-controller="PokemonController as pkmCtrl">
+		<h1>{{pkmCtrl.pokemon.name}} #{{pkmCtrl.pokemon.id}}</h1>
+		<h2>{{pkmCtrl.pokemon.species}}</h2>
+		<img src="http://img3.wikia.nocookie.net/__cb20140903033758/pokemon/images/b/b8/001Bulbasaur_Dream.png" alt="bulbasaur pokemon planta"/>
+		<ul>
+			<li><strong>Type:</strong> {{pkmCtrl.pokemon.type.join(', ')+"."}}</li>
+			<li><strong>Weight:</strong> {{pkmCtrl.pokemon.weight}}</li>
+			<li><strong>Height:</strong> {{pkmCtrl.pokemon.height}}</li>
+			<li><strong>Abilities:</strong> {{pkmCtrl.pokemon.abilities.join(', ')+"."}}</li>
+		</ul>
+	</div>
 </body>
 </html>
