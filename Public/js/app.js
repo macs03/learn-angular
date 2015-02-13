@@ -9,7 +9,6 @@
 				height:"2'4",
 				weight:"15.2 lbs",
 				abilities: ['Overgrowl','Chlorophyll'],
-				img: 'http://img3.wikia.nocookie.net/__cb20140903033758/pokemon/images/b/b8/001Bulbasaur_Dream.png',
 				stats: {
 					hp: 45,
 					atack: 49,

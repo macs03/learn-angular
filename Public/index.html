@@ -21,18 +21,18 @@
 	<div ng-controller="PokemonController as pkmCtrl" class="text-center">
 		<h1>{{pkmCtrl.pokemon.name | uppercase}} #{{pkmCtrl.pokemon.id}}</h1>
 		<h2>{{pkmCtrl.pokemon.species}}</h2>
-		<img src={{pkmCtrl.pokemon.img}} alt="bulbasaur pokemon planta" class="img-thumbnail img-responsive"/>
+		<img src="img/{{pkmCtrl.pokemon.name|lowercase}}.png" alt="{{pkmCtrl.pokemon.name}} pokemon planta" class="img-thumbnail img-responsive" width="250" height="250"/>
 		<ul class="nav nav-tabs nav-justified">
 			<li class="active"><a href="#">Pokedex</a></li>
 			<li><a href="#">Stats</a></li>
 			<li><a href="#">Evolutions</a></li>
 		</ul>
-		<div class="text-left">
+		<div class="text-left margen-derecho">
 		<ul>
 			<li class="list-group-item">
 				<strong>Type:</strong> 
 				<span class="pull-right">
-					<span ng-repeat="type in pkmCtrl.pokemon.type"class="label label-primary">
+					<span ng-repeat="type in pkmCtrl.pokemon.type" class="label label-primary">
 						{{type}}
 					</span>
 				</span>
@@ -59,6 +59,70 @@
 			</li>
 		</ul>
 		</div>
+		<!-- estadisticas -->
+		<div class="text-left margen-derecho">
+			<ul>
+				<li class="list-group-item">
+					<strong>hp:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats.hp}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Atack:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats.atack}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Defense:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats.defense}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Special Atack:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats['sp.atack']}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Special Defense:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats['sp.defense']}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Speed:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats.speed}}
+					</span>
+				</li>
+				<li class="list-group-item">
+					<strong>Total:</strong>
+					<span class = "pull-right label label-primary">
+						{{pkmCtrl.pokemon.stats.total}}
+					</span>
+				</li>
+			</ul>
+		</div>
+		<!-- Evoluciones -->
+		<div>
+			<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolutions">
+				<a href="#">
+					<img src="img/{{pokemon|lowercase}}.png" alt="pokemon {{pokemon}}" width="250" height="250" class="img-thumbnail img-responsive" />
+					<p>
+						<strong>
+							{{pokemon}}
+						</strong>
+					</p>
+				</a>
+				<span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
+			</div>
+		</div>
 	</div>
+	<footer class="text-center well">
+		&copy 2014 <strong>Pokedex</strong>
+	</footer>
 </body>
 </html>
