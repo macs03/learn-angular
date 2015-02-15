@@ -21,4 +21,20 @@
 				evolutions: ["Bulbasaur","Ivysaur","Venusaur"]
 			};
 	});
+
+	app.controller('TabsController',function () {
+		this.tab = 1;
+		this.selectTab = function  (tab) {
+			this.tab=tab;
+		};
+	});
+	
+	app.controller('ComentsController', function  () {
+		this.comments = [];
+		this.show = false;
+		this.toggle = function  () {
+			this.show = !this.show;
+		};
+	});
+
 })();
