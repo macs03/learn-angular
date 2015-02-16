@@ -141,9 +141,11 @@
 						<button type="submit" class="btn btn-lg">Comment</button>
 					</div>
 				</form>
+				<!---
 				<div class="alert alert-danger" ng-if="!commentsForm.$valid">
 					Formulario Invalido
 				</div>
+			-->
 				<blockquote ng-repeat="comment in cmtsCtrl.comments">
 					<p>{{comment.body}}</p>
 					<footer>
