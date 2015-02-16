@@ -130,21 +130,21 @@
 			<div class="panel-body">
 				<form class="form-horizontal" role="form">
 					<div class="form-group">
-						<textarea  ng-model="comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control">
+						<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control">
 							
 						</textarea>
-						<input ng-model="comment.email" ng-disabled="comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control">
+						<input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control">
 						<label for="anonimous">
-							<input ng-model="comment.anonymous"type="checkbox" id="anonimous">
+							<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonimous">
 							Anonymous
 						</label>
 						<button class="btn btn-lg">Comment</button>
 					</div>
 				</form>
 				<blockquote>
-					<p>{{comment.body}}</p>
+					<p>{{cmtsCtrl.comment.body}}</p>
 					<footer>
-						Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>Sep 12, 2014, 11:00:00 PM</span>
+						Comment by <a ng-if="!cmtsCtrl.comment.anonymous" href="mailto:{{cmtsCtrl.comment.email}}">{{cmtsCtrl.comment.email}}</a>  <em ng-if="cmtsCtrl.comment.anonymous">Anonymous</em> on <span>{{cmtsCtrl.comment.date}} </span>
 					</footer>
 				</blockquote>
 			</div>
