@@ -27,142 +27,115 @@
 			</ul>
 			<!-- pokedex -->
 			<div class="text-left margen-derecho" ng-show="tabs.tab===1">
+				<pokemon-data>
+
+				</pokemon-data>
+			</div>
+			<!-- estadisticas -->
+			<div class="text-left margen-derecho" ng-show="tabs.tab===2">
 				<ul>
 					<li class="list-group-item">
-						<strong>Type:</strong> 
-						<span class="pull-right">
-							<span ng-repeat="type in pkmCtrl.pokemon.type" class="label tipo-{{type|lowercase}}">
-								{{type}}
-							</span>
+						<strong>hp:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats.hp}}
 						</span>
 					</li>
 					<li class="list-group-item">
-						<strong>Weight:</strong> 
-						<span class="pull-right">
-							{{pkmCtrl.pokemon.weight}}
+						<strong>Atack:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats.atack}}
 						</span>
 					</li>
 					<li class="list-group-item">
-						<strong>Height:</strong> 
-						<span class="pull-right">
-							{{pkmCtrl.pokemon.height}}
+						<strong>Defense:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats.defense}}
 						</span>
 					</li>
 					<li class="list-group-item">
-						<strong>Abilities:</strong> 
-						<ul>
-							<li ng-repeat="abilities in pkmCtrl.pokemon.abilities">
-								{{abilities}}
-							</li>
-						</ul>
+						<strong>Special Atack:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats['sp.atack']}}
+						</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Special Defense:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats['sp.defense']}}
+						</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Speed:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats.speed}}
+						</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Total:</strong>
+						<span class = "pull-right label label-primary">
+							{{pkmCtrl.pokemon.stats.total}}
+						</span>
 					</li>
 				</ul>
+			</div>
+			<!-- Evoluciones -->
+			<div ng-show="tabs.tab===3">
+				<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolutions">
+					<a href="#">
+						<img src="img/{{pokemon|lowercase}}.png" alt="pokemon {{pokemon}}" width="250" height="250" class="img-thumbnail img-responsive" />
+						<p>
+							<strong>
+								{{pokemon}}
+							</strong>
+						</p>
+					</a>
+					<span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
 				</div>
-				<!-- estadisticas -->
-				<div class="text-left margen-derecho" ng-show="tabs.tab===2">
-					<ul>
-						<li class="list-group-item">
-							<strong>hp:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats.hp}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Atack:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats.atack}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Defense:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats.defense}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Special Atack:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats['sp.atack']}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Special Defense:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats['sp.defense']}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Speed:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats.speed}}
-							</span>
-						</li>
-						<li class="list-group-item">
-							<strong>Total:</strong>
-							<span class = "pull-right label label-primary">
-								{{pkmCtrl.pokemon.stats.total}}
-							</span>
-						</li>
-					</ul>
-				</div>
-				<!-- Evoluciones -->
-				<div ng-show="tabs.tab===3">
-					<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolutions">
-						<a href="#">
-							<img src="img/{{pokemon|lowercase}}.png" alt="pokemon {{pokemon}}" width="250" height="250" class="img-thumbnail img-responsive" />
-							<p>
-								<strong>
-									{{pokemon}}
-								</strong>
-							</p>
-						</a>
-						<span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
-					</div>
-				</div>
+			</div>
 		</div>
 		<!-- Comentarios -->
 		<div ng-controller="ComentsController as cmtsCtrl">
 			<button class="btn btn-primary " ng-hide="cmtsCtrl.show" ng-click="cmtsCtrl.toggle()">Show Comments <span class="badge" >{{cmtsCtrl.comments.length}}</span></button>
-		<div class = "panel panel-primary margen-derecho margen-izquierdo" ng-show="cmtsCtrl.show">
-			<div class="panel-heading">
-				<h2 class="panel-title">Comments <button class="close pull-right" ng-click="cmtsCtrl.toggle()">&times;</button> </h2>
-			</div>
-			<div class="panel-body">
-				<form name="commentsForm"class="form-horizontal" role="form" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate>
-					<div class="form-group">
-						<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control" required>
-							
-						</textarea>
-						<input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control" ng-required="!cmtsCtrl.comment.anonymous">
-						<label for="anonimous">
-							<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonimous">
-							Anonymous
-						</label>
-						<button type="submit" class="btn btn-lg">Comment</button>
-					</div>
-				</form>
+			<div class = "panel panel-primary margen-derecho margen-izquierdo" ng-show="cmtsCtrl.show">
+				<div class="panel-heading">
+					<h2 class="panel-title">Comments <button class="close pull-right" ng-click="cmtsCtrl.toggle()">&times;</button> </h2>
+				</div>
+				<div class="panel-body">
+					<form name="commentsForm"class="form-horizontal" role="form" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate>
+						<div class="form-group">
+							<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control" required>
+
+							</textarea>
+							<input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control" ng-required="!cmtsCtrl.comment.anonymous">
+							<label for="anonimous">
+								<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonimous">
+								Anonymous
+							</label>
+							<button type="submit" class="btn btn-lg">Comment</button>
+						</div>
+					</form>
 				<!---
 				<div class="alert alert-danger" ng-if="!commentsForm.$valid">
 					Formulario Invalido
 				</div>
 			-->
-				<blockquote ng-repeat="comment in cmtsCtrl.comments">
-					<p>{{comment.body}}</p>
-					<footer>
-						Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date | date : 'medium'}} </span>
-					</footer>
-				</blockquote>
-			</div>
+			<blockquote ng-repeat="comment in cmtsCtrl.comments">
+				<p>{{comment.body}}</p>
+				<footer>
+					Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date | date : 'medium'}} </span>
+				</footer>
+			</blockquote>
 		</div>
-		</div>
-		
 	</div>
-	<footer class="text-center well">
-		&copy 2014 <strong>Pokedex</strong>
-	</footer>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js" ></script>
-	<script src="js/app.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</div>
+
+</div>
+<footer class="text-center well">
+	&copy 2014 <strong>Pokedex</strong>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js" ></script>
+<script src="js/app.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body>
 </html>

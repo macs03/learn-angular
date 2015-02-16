@@ -48,4 +48,12 @@
 		};
 	});
 
+	app.directive('pokemonData',function  () {
+		return {
+			restric: 'E',
+			templateUrl: 'partials/pokemon-data.html'
+		};
+	});
+
+
 })();
