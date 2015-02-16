@@ -128,7 +128,7 @@
 				<h2 class="panel-title">Comments <button class="close pull-right" ng-click="cmtsCtrl.toggle()">&times;</button> </h2>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form" ng-submit="cmtsCtrl.addComment()">
 					<div class="form-group">
 						<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control">
 							
@@ -138,13 +138,13 @@
 							<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonimous">
 							Anonymous
 						</label>
-						<button class="btn btn-lg">Comment</button>
+						<button type="submit" class="btn btn-lg">Comment</button>
 					</div>
 				</form>
-				<blockquote>
+				<blockquote ng-repeat="comment in cmtsCtrl.comments">
 					<p>{{cmtsCtrl.comment.body}}</p>
 					<footer>
-						Comment by <a ng-if="!cmtsCtrl.comment.anonymous" href="mailto:{{cmtsCtrl.comment.email}}">{{cmtsCtrl.comment.email}}</a>  <em ng-if="cmtsCtrl.comment.anonymous">Anonymous</em> on <span>{{cmtsCtrl.comment.date}} </span>
+						Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date}} </span>
 					</footer>
 				</blockquote>
 			</div>
