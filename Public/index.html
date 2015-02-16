@@ -128,12 +128,12 @@
 				<h2 class="panel-title">Comments <button class="close pull-right" ng-click="cmtsCtrl.toggle()">&times;</button> </h2>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" role="form" ng-submit="cmtsCtrl.addComment()">
+				<form name="commentsForm"class="form-horizontal" role="form" ng-submit="commentsForm.$valid && cmtsCtrl.addComment()" novalidate>
 					<div class="form-group">
-						<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control">
+						<textarea  ng-model="cmtsCtrl.comment.body"name="comentario" id="comentario" cols="30" rows="3" placeholder="Please tell us what you think about {{pkmCtrl.pokemon.name}}" class="form-control" required>
 							
 						</textarea>
-						<input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control">
+						<input ng-model="cmtsCtrl.comment.email" ng-disabled="cmtsCtrl.comment.anonymous"type="email" placeholder="Please enter your e-mail" class="form-control" ng-required="!cmtsCtrl.comment.anonymous">
 						<label for="anonimous">
 							<input ng-model="cmtsCtrl.comment.anonymous" ng-change="cmtsCtrl.anonymousChanged()" type="checkbox" id="anonimous">
 							Anonymous
@@ -141,10 +141,13 @@
 						<button type="submit" class="btn btn-lg">Comment</button>
 					</div>
 				</form>
+				<div class="alert alert-danger" ng-if="!commentsForm.$valid">
+					Formulario Invalido
+				</div>
 				<blockquote ng-repeat="comment in cmtsCtrl.comments">
-					<p>{{cmtsCtrl.comment.body}}</p>
+					<p>{{comment.body}}</p>
 					<footer>
-						Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date}} </span>
+						Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date | date : 'medium'}} </span>
 					</footer>
 				</blockquote>
 			</div>
