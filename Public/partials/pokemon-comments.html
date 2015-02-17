@@ -17,14 +17,14 @@
 				<button type="submit" class="btn btn-lg">Comment</button>
 			</div>
 		</form>
-				<!---
-				<div class="alert alert-danger" ng-if="!commentsForm.$valid">
-					Formulario Invalido
-				</div>
-			-->
-			<blockquote ng-repeat="comment in cmtsCtrl.comments">
-				<p>{{comment.body}}</p>
-				<footer>
-					Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date | date : 'medium'}} </span>
-				</footer>
-			</blockquote>
+			<!---
+			<div class="alert alert-danger" ng-if="!commentsForm.$valid">
+				Formulario Invalido
+			</div>
+		-->
+		<blockquote ng-repeat="comment in cmtsCtrl.comments">
+			<p>{{comment.body}}</p>
+			<footer>
+				Comment by <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a>  <em ng-if="comment.anonymous">Anonymous</em> on <span>{{comment.date | date : 'medium'}} </span>
+			</footer>
+		</blockquote>

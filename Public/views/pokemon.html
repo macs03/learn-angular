@@ -12,24 +12,25 @@
 			<div class="text-left margen-derecho" ng-show="tabs.tab===1">
 				<pokemon-data>
 
-			</pokemon-data>
+				</pokemon-data>
+			</div>
+			<!-- estadisticas -->
+			<div class="text-left margen-derecho" ng-show="tabs.tab===2">
+				<pokemon-stats>
+
+				</pokemon-stats>
+			</div>
+			<!-- Evoluciones -->
+			<div ng-show="tabs.tab===3">
+				<pokemon-evolutions>
+
+				</pokemon-evolutions>
+			</div>
 		</div>
-		<!-- estadisticas -->
-		<div class="text-left margen-derecho" ng-show="tabs.tab===2">
-			<pokemon-stats>
+		<!-- Comentarios -->
+			<pokemon-comments>
 
-		</pokemon-stats>
+			</pokemon-comments>
+		
 	</div>
-	<!-- Evoluciones -->
-	<div ng-show="tabs.tab===3">
-		<pokemon-evolutions>
-
-	</pokemon-evolutions>
-	</div>
-	</div>
-	<!-- Comentarios -->
-	<pokemon-comments>
-
-	</pokemon-comments>
-
-</div>
+	

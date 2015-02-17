@@ -2,14 +2,16 @@
 		var app = angular.module('pokedex',[
 			'ngRoute',
 			'pokedex.controllers',
-			'pokedex.directives'
+			'pokedex.directives',
+			'pokedex.filters'
 			]);
 
 		app.config(['$routeProvider',function ($routeProvider) {
+			console.log(2);
 			$routeProvider
 				.when('/',{
 					templateUrl: 'views/pokedex.html',
-					controller: 'PokedexContrller'
+					controller: 'PokedexController'
 				})
 				.when('/pokemon/:id',{
 					templateUrl: 'views/pokemon.html',

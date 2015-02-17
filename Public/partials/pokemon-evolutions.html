@@ -1,6 +1,6 @@
-<div class="text-center" ng-repeat="pokemon in pkmCtrl.pokemon.evolutions">
+<div class="text-center" ng-repeat="pokemon in pokemon.evolutions">
 	<a href="#">
-		<img src="img/{{pokemon|lowercase}}.png" alt="pokemon {{pokemon}}" width="250" height="250" class="img-thumbnail img-responsive" />
+		 <img src="{{pokemon | imageify}}" width="160">
 		<p>
 			<strong>
 				{{pokemon}}

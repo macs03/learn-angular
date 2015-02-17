@@ -1,10 +1,14 @@
 (function  () {
 	angular.module('pokedex.controllers',[])
-		.controller('PokedexController',[ '$scope','$http' , function  ($scope,$http) {
-			
-		}])
-		.controller('PokemonController',function () {
-			this.pokemon = {
+		.controller('PokedexController', ['$scope', '$http', function ($scope, $http) {
+			$scope.pokemons = [];
+			$http.get('/Public/pokemons.json')
+				.success(function (data) {
+					$scope.pokemons = data;
+				});
+			}])
+		.controller('PokemonController',['$scope', function ($scope) {
+			$scope.pokemon = {
 					id: '001',
 					name:'Bulbasaur',
 					species: 'Seed Pokemon',
@@ -23,7 +27,7 @@
 					},
 					evolutions: ["Bulbasaur","Ivysaur","Venusaur"]
 				};
-		})
+		}])
 
 		.controller('TabsController',function () {
 			this.tab = 1;
