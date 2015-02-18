@@ -1,6 +1,5 @@
-<span>hola evolutions todo bien</span>
-<div class="text-center" ng-repeat="pokemon in pokemon.evolutions">
-	<a href="/Public/#/pokemon/{{pokemon.name | normalize}}">
+<div class="text-center" ng-repeat="pokemon in pokemon.evolution">
+	<a href="/Public/#/pokemon/{{pokemon | normalize}}">
 		 <img src="{{pokemon | imageify}}" width="160">
 		<p>
 			<strong>
