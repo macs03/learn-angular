@@ -3,17 +3,21 @@
 			'ngRoute',
 			'pokedex.controllers',
 			'pokedex.directives',
-			'pokedex.filters'
+			'pokedex.filters',
+			'pokedex.services'
 			]);
 
 		app.config(['$routeProvider',function ($routeProvider) {
-			console.log(2);
 			$routeProvider
 				.when('/',{
 					templateUrl: 'views/pokedex.html',
 					controller: 'PokedexController'
 				})
-				.when('/pokemon/:id',{
+				.when('/:type',{
+					templateUrl : 'views/pokedex.html',
+					controller: 'PokedexController'
+				})
+				.when('/pokemon/:name',{
 					templateUrl: 'views/pokemon.html',
 					controller: 'PokemonController',
 					controllerAs: 'pkmCtrl'
