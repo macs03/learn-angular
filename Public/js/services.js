@@ -7,7 +7,7 @@
 
 		function all() {
 			var deferred = $q.defer();
-			$http.get('/Public/pokemons.json')
+			$http.get('/learn-angular/Public/pokemons.json')
 			.success(function (data) {
 				deferred.resolve(data);
 			});
