@@ -13,11 +13,11 @@
 					templateUrl: 'views/pokedex.html',
 					controller: 'PokedexController'
 				})
-				.when('/learn-angular/Public/#/:type',{
+				.when('/:type',{
 					templateUrl : 'views/pokedex.html',
 					controller: 'PokedexController'
 				})
-				.when('/learn-angular/Public/#/pokemon/:name',{
+				.when('/pokemon/:name',{
 					templateUrl: 'views/pokemon.html',
 					controller: 'PokemonController',
 					controllerAs: 'pkmCtrl'
